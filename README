@@ -1,0 +1,5 @@
+# Starter kit for Spring + SpringMVC + MyBatis
+
+```shell
+mvn -Pdev -Djetty.port=9080 -Djetty.reload=automatic -Djetty.scanIntervalSeconds=2 jetty:run
+```

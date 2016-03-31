@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<!-- 引入属性文件 -->
+	<!-- <context:property-placeholder location="classpath:jdbc.properties" 
+		/> -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+		<property name="ignoreResourceNotFound" value="true" />
+		<property name="locations">
+			<list>
+				<value>classpath:jdbc.properties</value>
+			</list>
+		</property>
+	</bean>
+	<import resource="classpath:spring-mybatis.xml" />
+
+	<!-- 自动扫描(自动注入) -->
+	<!-- <context:component-scan base-package="com.himysql.mybatis.dao" /> -->
+	<!-- <context:component-scan base-package="com.himysql.mybatis.model" /> -->
+	<context:component-scan base-package="com.himysql.service" />
+	<!-- <context:component-scan base-package="com.himysql.controller" /> -->
+
+</beans>
